@@ -18,6 +18,7 @@ UICollectionViewDataSource,
 SCFlowLayoutDelegate
 >
 @property(nonatomic,strong)UICollectionView *colloectionView;
+@property(nonatomic,strong)NSArray *arry;
 @end
 
 @implementation ViewController
@@ -44,8 +45,13 @@ SCFlowLayoutDelegate
        //Call this Block When enter the refresh status automatically
     }];
    self.colloectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
-
     [self.colloectionView.mj_header beginRefreshing];
+    
+    //image height
+    self.arry = [NSArray arrayWithObjects:@"200",@"50",@"200",@"290",@"400",@"210",@"230",@"270",@"280",@"300", nil];
+    
+    
+    
  
 }
 -(void)loadNewData
@@ -55,7 +61,7 @@ SCFlowLayoutDelegate
 #pragma mark - UICollectionViewDataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 200;
+    return 10;
 }
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -70,7 +76,7 @@ SCFlowLayoutDelegate
 #pragma SCFlowLayoutDelegate-根据图片输出每一个高度
 - (CGFloat)waterFallLayout:(SCFlowLayout *)waterFallLayout heightForItemAtIndexPath:(NSUInteger)indexPath itemWidth:(CGFloat)itemWidth
 {
-    return 200;
+    return [self.arry[indexPath] floatValue];
 }
 
 

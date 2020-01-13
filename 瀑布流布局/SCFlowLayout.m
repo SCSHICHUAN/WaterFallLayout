@@ -130,6 +130,9 @@ static const UIEdgeInsets DefaultEdgeInsets = {10,10,10,10};
     CGFloat collectionViewW = self.collectionView.frame.size.width;
     
     CGFloat cellW = (collectionViewW - self.edgeInsets.left - self.edgeInsets.right - (self.colunmCount - 1) * self.columnMargin) / self.colunmCount;
+    /*
+     从代理或每个cell的高度
+     */
     CGFloat cellH = [self.delegate waterFallLayout:self heightForItemAtIndexPath:indexPath.item itemWidth:cellW];
     // 找出最短的那一列
        NSInteger destColumn = 0;
